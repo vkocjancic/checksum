@@ -15,9 +15,9 @@ namespace CheckSum.Writer
             writer.WriteLine("\tcreate (cr)\tcreate checksum file");
             writer.WriteLine("\tcheck (ch)\tcheck checksum file with calculated checksum");
             writer.WriteLine("\nAlgorithm");
-            writer.WriteLine("\tmd5\t\tclaculate checksum using md5");
-            writer.WriteLine("\tsha1\t\tclaculate checksum using sha1");
-            writer.WriteLine("\tsha2\t\tclaculate checksum using sha2");
+            writer.WriteLine("\tmd5\t\tcalculate checksum using md5");
+            writer.WriteLine("\tsha1\t\tcalculate checksum using sha1");
+            writer.WriteLine("\tsha2\t\tcalculate checksum using sha2");
         }
 
         public static void LogException(Exception ex, IOutputWriter writer)
