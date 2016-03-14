@@ -13,6 +13,7 @@ namespace CheckSum.Common
         public static readonly Algorithm MD5 = new Md5Algorithm();
         public static readonly Algorithm SHA2 = new Sha2Algorithm();
         public static readonly Algorithm Undefined = new UndefinedAlgorithm();
+        private readonly string ChecksumFileName = "checksum.txt";
 
         #endregion
 
@@ -45,7 +46,7 @@ namespace CheckSum.Common
             var hash = "";
             foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories))
             {
-                if (file.Contains("checksum.txt"))
+                if (file.Contains(this.ChecksumFileName))
                 {
                     continue;
                 }

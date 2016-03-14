@@ -6,6 +6,7 @@ namespace CheckSum.Common
         #region Static methods
 
         public static ArgumentAction Create(string actionName) {
+            actionName = actionName.ToLower();
             var action = ArgumentAction.Undefined;
             if (("cr" == actionName) || ("create" == actionName)) {
                 action = ArgumentAction.Create;
