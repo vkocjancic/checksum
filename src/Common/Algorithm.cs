@@ -11,7 +11,7 @@ namespace CheckSum.Common
         #region Fields
 
         public static readonly Algorithm MD5 = new Md5Algorithm();
-        public static Algorithm SHA1 = new Sha1Algorithm();
+        public static readonly Algorithm SHA1 = new Sha1Algorithm();
         public static readonly Algorithm SHA2 = new Sha2Algorithm();
         public static readonly Algorithm Undefined = new UndefinedAlgorithm();
         private readonly string ChecksumFileName = "checksum.txt";      
