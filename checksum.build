@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project name="checksum" default="use">
+    <property name="nant.settings.currentframework" value="net-4.0" />
+    <property name="msbuild.path" value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" />
+    <property name="deploy.dir" value="deploy" />
+    <property name="output.dir" value="bin" />
+
+    <target name="use" description="How to build checksum">
+        <echo>
+            nant use            Get this screen
+            nant clean          Cleans output directory
+            nant build          Builds a project
+            nant rebuild        Cleans and builds a project
+            nant deploy         Prepares deployment package
+        </echo>
+    </target>
+
+    <target name="clean" description="Clean output directory">
+        <delete dir="${output.dir}" />
+    </target>
+
+    <target name="build" description="Build this project">
+        <exec program="${msbuild.path}"
+            commandline="checksum.sln /t:Rebuild /p:Configuration=Release /v:m" />
+    </target>
+
+    <target name="rebuild" description="Clean and build this project" depends="clean,build" />
+
+    <target name="deploy" description="Prepare deployment package">
+        <tstamp property="timestamp" pattern="yyyyMMdd_HHmmss" verbose="true" />
+        <zip zipfile="${deploy.dir}\${timestamp}_checksum.zip" >
+        <fileset basedir = "${output.dir}\Release">
+            <include name="**\*.exe" />
+            <include name="**\*.dll" />
+        </fileset>
+        </zip>
+    </target>
+</project>
