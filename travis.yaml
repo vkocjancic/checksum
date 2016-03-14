@@ -1,0 +1,4 @@
+language: csharp
+solution: checksum.sln
+script:
+  - xbuild /t:Rebuild /p:Configuration=Release checksum.sln
