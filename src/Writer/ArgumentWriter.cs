@@ -10,7 +10,14 @@ namespace CheckSum.Writer
 
         public static void WriteUse(Argument argument, IOutputWriter writer)
         {
-            writer.WriteLine("Usage: checksum cr|create|ch|check directory md5|sha1|sha2");
+            writer.WriteLine("Usage: checksum action directory algorithm");
+            writer.WriteLine("\nAction");
+            writer.WriteLine("\tcreate (cr)\tcreate checksum file");
+            writer.WriteLine("\tcheck (ch)\tcheck checksum file with calculated checksum");
+            writer.WriteLine("\nAlgorithm");
+            writer.WriteLine("\tmd5\t\tclaculate checksum using md5");
+            writer.WriteLine("\tsha1\t\tclaculate checksum using sha1");
+            writer.WriteLine("\tsha2\t\tclaculate checksum using sha2");
         }
 
         public static void LogException(Exception ex, IOutputWriter writer)
