@@ -3,3 +3,7 @@
 
 # exclude obj folder
 */obj
+
+#exclude VS files
+**/*.suo
+/.vs
