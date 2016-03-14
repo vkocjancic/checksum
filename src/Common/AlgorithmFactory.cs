@@ -14,6 +14,10 @@ namespace CheckSum.Common
             {
                 algorithm = Algorithm.MD5;
             }
+            else if (algorithmName == "sha1")
+            {
+                algorithm = Algorithm.SHA1;
+            }
             else if (algorithmName == "sha2")
             {
                 algorithm = Algorithm.SHA2;

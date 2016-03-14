@@ -11,9 +11,10 @@ namespace CheckSum.Common
         #region Fields
 
         public static readonly Algorithm MD5 = new Md5Algorithm();
+        public static readonly Algorithm SHA1 = new Sha1Algorithm();
         public static readonly Algorithm SHA2 = new Sha2Algorithm();
         public static readonly Algorithm Undefined = new UndefinedAlgorithm();
-        private readonly string ChecksumFileName = "checksum.txt";
+        private readonly string ChecksumFileName = "checksum.txt";      
 
         #endregion
 
@@ -26,7 +27,6 @@ namespace CheckSum.Common
         #region Abstract methods
 
         public abstract string CreateHash(string directory);
-        public abstract bool IsValid();
 
         #endregion
 
@@ -35,6 +35,11 @@ namespace CheckSum.Common
         public virtual bool AreHashesEqual(string hashSearch, string hashOriginal)
         {
             return (hashSearch == hashOriginal);
+        }
+
+        public virtual bool IsValid()
+        {
+            return true;
         }
 
         #endregion
@@ -68,7 +73,6 @@ namespace CheckSum.Common
 
         private class Md5Algorithm : Algorithm
         {
-
             public override string CreateHash(string directory)
             {
                 using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -76,12 +80,17 @@ namespace CheckSum.Common
                     return ComputeHash(directory, md5.ComputeHash);
                 }
             }
+        }
 
-            public override bool IsValid()
+        private class Sha1Algorithm : Algorithm
+        {
+            public override string CreateHash(string directory)
             {
-                return true;
+                using (var sha1 = new SHA1Managed())
+                {
+                    return ComputeHash(directory, sha1.ComputeHash);
+                }
             }
-
         }
 
         private class Sha2Algorithm : Algorithm
@@ -92,11 +101,6 @@ namespace CheckSum.Common
                 {
                     return ComputeHash(directory, sha2.ComputeHash);
                 }
-            }
-
-            public override bool IsValid()
-            {
-                return true;
             }
         }
 
