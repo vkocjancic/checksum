@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -49,7 +50,7 @@ namespace CheckSum.Common
         protected string ComputeHash(string directory, Func<byte[], byte[]> computeHashAction)
         {
             var hash = "";
-            foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories))
+            foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories).OrderBy(f => f))
             {
                 if (file.Contains(this.ChecksumFileName))
                 {

@@ -1,5 +1,5 @@
 using System;
-using CheckSum.Writer;
+using CheckSum.IO;
 
 namespace CheckSum.Common
 {

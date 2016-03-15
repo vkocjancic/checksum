@@ -1,7 +1,7 @@
 using System;
 using CheckSum.Common;
 
-namespace CheckSum.Writer
+namespace CheckSum.IO
 {
     public static class ArgumentWriter
     {

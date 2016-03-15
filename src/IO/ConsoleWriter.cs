@@ -1,6 +1,6 @@
 using System;
 
-namespace CheckSum.Writer
+namespace CheckSum.IO
 {
     public class ConsoleWriter : IOutputWriter
     {

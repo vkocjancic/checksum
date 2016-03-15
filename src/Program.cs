@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using CheckSum.Common;
-using CheckSum.Writer;
+using CheckSum.IO;
 
 namespace CheckSum
 {

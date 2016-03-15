@@ -1,4 +1,4 @@
-namespace CheckSum.Writer
+namespace CheckSum.IO
 {
     public class FileReader : ICheckSumReader
     {
