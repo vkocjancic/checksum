@@ -7,7 +7,7 @@ script:
   provider: releases
   api_key: "6bf6aad7bebd22854360d9db15cbab21550fe2c5"
   file: 
-	- "checksum.exe"
+    - "checksum.exe"
   skip_cleanup: true
   on:
     tags: true
