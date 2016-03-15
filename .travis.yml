@@ -1,13 +1,12 @@
 language: csharp
 solution: checksum.sln
 script:
-  - xbuild /t:Rebuild /p:Configuration=Release checksum.sln
+- xbuild /t:Rebuild /p:Configuration=Release checksum.sln
 deploy:
   provider: releases
-  api_key: 
-    secure: "6bf6aad7bebd22854360d9db15cbab21550fe2c5"
-  file: 
-    - "checksum.exe"
+  api_key:
+    secure: sgAoYFl54FYUNg8/jvjUgXTUA048dzYlruoj72dGDij11hAg0fwhCP4gSo9CXHvyaDjIVJvr4WyxzQXZ5ChBP4veKjO+o1uLvDt1CNVZZF9DAWCBXA04ayHtnnr/DEU7KkI2zAkyEgqLfMZ5W1BLesHnCyGwjBBXvJh2wm+LB0IZjHD1TzdYyEafZX20NBazuqCZTa3vsziUX5hc211lRCqLL22q95pjxaMvc7l7ROzsQ6vxRMEpTeWBBW8nwrLi9hh87560U7AffkqctnrlfvXvGDcae62kLummeUhpvs6AXQouLl3WS3FVe7bDV9e0aQ7lWRacK3ne5GCTSQtDs04L5rV+M1r2l80CPNKJWuqBtPlwX6Fc5Ntt6uxzZYgJdOQFm8Wl3wVwFc0MaWhfI11T4v8IxbCMAUHcF1YBtT1azTmEVyw7fBL72aVmSNorWwRob3uDTLWMk4NkMGcNdQhb786jtv+OtMDHU9ZgLN40OoFyBZaxtv7yoHJ3JvNIvdp1JXKjpm41BV+rdSKIutiFCHvhKXBbu0HF+N1s3OaejYfRDRXWz3bh1eWeGm2uuo3Y3DUWRQOh4p2t+zC5FBr0kEeEGGYmDKvbYfosP/IZWf5YibXq2Fs96qUhIByEtSg+G9nY9MaVtmZbDmmxSrsb9BMPpNTs1JNjd6pZoS8=
+  file: checksum.exe
   skip_cleanup: true
   on:
     tags: true
