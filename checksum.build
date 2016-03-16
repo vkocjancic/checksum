@@ -22,7 +22,7 @@
 
     <target name="build" description="Build this project">
         <exec program="${msbuild.path}"
-            commandline="checksum.sln /t:Rebuild /p:Configuration=Release /v:m" />
+            commandline="src/checksum.sln /t:Rebuild /p:Configuration=Release /v:m" />
     </target>
 
     <target name="rebuild" description="Clean and build this project" depends="clean,build" />
