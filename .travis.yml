@@ -1,7 +1,8 @@
 language: csharp
 solution: checksum.sln
 script:
-- xbuild /t:Rebuild /p:Configuration=Release checksum.sln
+- xbuild /t:Rebuild /p:Configuration=Release src/checksum.sln
+- mono ./src/packages/NUnit.ConsoleRunner.3.2.0/tools/nunit3-console.exe ./src/checksum.unit.test/bin/Release/checksum.unit.test.dll
 deploy:
   provider: releases
   api_key:
