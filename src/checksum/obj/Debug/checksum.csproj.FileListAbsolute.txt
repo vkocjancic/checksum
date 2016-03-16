@@ -1,0 +1,8 @@
+E:\work\privat\checksum\bin\Debug\checksum.exe
+E:\work\privat\checksum\bin\Debug\checksum.pdb
+E:\work\privat\checksum\src\obj\Debug\checksum.exe
+E:\work\privat\checksum\src\obj\Debug\checksum.pdb
+E:\work\privat\checksum\src\obj\Debug\checksum.csprojResolveAssemblyReference.cache
+E:\work\privat\checksum\src\checksum\obj\Debug\checksum.exe
+E:\work\privat\checksum\src\checksum\obj\Debug\checksum.pdb
+E:\work\privat\checksum\src\checksum\obj\Debug\checksum.csprojResolveAssemblyReference.cache

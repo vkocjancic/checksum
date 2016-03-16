@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{0D9844CB-BC62-4D38-9967-B603A82C1275}") = "CheckSum", "src\checksum.csproj", "{0B9A6952-2A4B-4AEF-8B27-27C88ACF6D7A}"
+Project("{0D9844CB-BC62-4D38-9967-B603A82C1275}") = "CheckSum", "checksum\checksum.csproj", "{0B9A6952-2A4B-4AEF-8B27-27C88ACF6D7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
