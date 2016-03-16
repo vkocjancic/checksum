@@ -1,9 +1,9 @@
 # exclude bin folder
-/bin
-
-# exclude obj folder
-*/obj
+bin
 
 #exclude VS files
 **/*.suo
 /.vs
+src/packages
+src/*/bin
+src/*/obj
