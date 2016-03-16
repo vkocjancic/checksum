@@ -21,14 +21,14 @@ namespace CheckSum.Common
 
         #region Abstract methods
 
-        public abstract void Execute(Algorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader);
+        public abstract void Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader);
         public abstract bool IsValid();
 
         #endregion
 
         private class CreateArgumentAction : ArgumentAction
         {
-            public override void Execute(Algorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
+            public override void Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
             {
                 var hash = algorithm.CreateHash(directory);
                 writer.WriteToFile(hash, directory, "checksum.txt");
@@ -43,7 +43,7 @@ namespace CheckSum.Common
 
         private class CheckArgumentAction : ArgumentAction
         {
-            public override void Execute(Algorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
+            public override void Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
             {
                 var hash = algorithm.CreateHash(directory);
                 var hashOriginal = reader.ReadHash(directory, "checksum.txt");
@@ -61,7 +61,7 @@ namespace CheckSum.Common
 
         private class UndefinedArgumentAction : ArgumentAction
         {
-            public override void Execute(Algorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
+            public override void Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
             {
                 throw new NotImplementedException();
             }

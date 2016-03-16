@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CheckSum.Common
 {
-    public abstract class Algorithm
+    public abstract class Algorithm : IAlgorithm
     {
 
         #region Fields
