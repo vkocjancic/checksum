@@ -47,6 +47,7 @@
     <Compile Include="Common\ArgumentActionTest.cs" />
     <Compile Include="Common\ArgumentFactoryTest.cs" />
     <Compile Include="Common\ArgumentTest.cs" />
+    <Compile Include="IO\ArgumentWriterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

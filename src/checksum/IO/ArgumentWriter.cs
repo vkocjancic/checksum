@@ -8,7 +8,7 @@ namespace CheckSum.IO
 
         #region Static methods
 
-        public static void WriteUse(Argument argument, IOutputWriter writer)
+        public static void WriteUse(IOutputWriter writer)
         {
             writer.WriteLine("Usage: checksum action directory algorithm");
             writer.WriteLine("\nAction");

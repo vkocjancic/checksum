@@ -25,7 +25,7 @@ namespace CheckSum
             }
             else
             {
-                ArgumentWriter.WriteUse(argument, new ConsoleWriter());
+                ArgumentWriter.WriteUse(new ConsoleWriter());
             }
         }
     }
