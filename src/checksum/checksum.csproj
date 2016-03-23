@@ -45,7 +45,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\*.cs" />
+    <Compile Include="Common\Algorithm.cs" />
+    <Compile Include="Common\AlgorithmFactory.cs" />
+    <Compile Include="Common\Argument.cs" />
+    <Compile Include="Common\ArgumentAction.cs" />
+    <Compile Include="Common\ArgumentActionFactory.cs" />
+    <Compile Include="Common\ArgumentFactory.cs" />
+    <Compile Include="Common\IAlgorithm.cs" />
+    <Compile Include="Common\ArgumentActionResult.cs" />
+    <Compile Include="Common\ArgumentActionStatus.cs" />
     <Compile Include="IO\*.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -33,29 +33,28 @@ namespace checksum.unit.test.Common
         public class ArgumentActionCheckTest : ArgumentActionTest
         {
             [Test]
-            public void Execute_HashesAreNotEqual_throwsInvalidChecksumException()
+            public void Execute_HashesAreNotEqual_returnsStatusInvalidHash()
             {
                 m_algorithm.ResetCalls();
                 m_reader.ResetCalls();
                 m_reader.Setup(r => r.ReadHash(It.IsAny<string>(), It.IsAny<string>())).Returns("cba");
                 m_algorithm.Setup(a => a.AreHashesEqual(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
-                var action = ArgumentAction.Check;
-                Assert.Throws(typeof(InvalidCheckSumException), 
-                    () => action.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object));
+                var result = ArgumentAction.Check.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object);
+                Assert.AreEqual(ArgumentActionStatus.InvalidHash, result.Status);
                 m_reader.Verify(x => x.ReadHash("directory", "checksum.txt"), Times.Once());
                 m_algorithm.Verify(x => x.CreateHash("directory"), Times.Once());
                 m_algorithm.Verify(x => x.AreHashesEqual("abc", "cba"), Times.Once());
             }
 
             [Test]
-            public void Execute_HashesAreEqual_NoExceptionRaised()
+            public void Execute_HashesAreEqual_returnsStatusSuccess()
             {
                 m_algorithm.ResetCalls();
                 m_reader.ResetCalls();
                 m_reader.Setup(r => r.ReadHash(It.IsAny<string>(), It.IsAny<string>())).Returns("abc");
                 m_algorithm.Setup(a => a.AreHashesEqual(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-                var action = ArgumentAction.Check;
-                action.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object);
+                var result = ArgumentAction.Check.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object);
+                Assert.AreEqual(ArgumentActionStatus.Success, result.Status);
                 m_reader.Verify(x => x.ReadHash("directory", "checksum.txt"), Times.Once());
                 m_algorithm.Verify(x => x.CreateHash("directory"), Times.Once());
                 m_algorithm.Verify(x => x.AreHashesEqual("abc", "abc"), Times.Once());

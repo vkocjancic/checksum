@@ -1,11 +1,8 @@
-﻿using CheckSum.IO;
+﻿using CheckSum.Common;
+using CheckSum.IO;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace checksum.unit.test.IO
 {
@@ -47,7 +44,7 @@ namespace checksum.unit.test.IO
         }
 
         [TestFixture]
-        public class LogException : ArgumentWriterTest
+        public class LogExceptionTest : ArgumentWriterTest
         {
 
             [Test]
@@ -56,6 +53,20 @@ namespace checksum.unit.test.IO
                 var ex = new Exception("test");
                 ArgumentWriter.LogException(ex, m_wriConsole.Object);
                 m_wriConsole.Verify(x => x.WriteLine(ex.Message), Times.Once());
+            }
+
+        }
+
+        [TestFixture]
+        public class WriteResultTest : ArgumentWriterTest
+        {
+
+            [Test]
+            public void WriteResult_OutputsResultString()
+            {
+                var result = new ArgumentActionResult(ArgumentActionStatus.Success);
+                ArgumentWriter.WriteResult(result, m_wriConsole.Object);
+                m_wriConsole.Verify(x => x.WriteLine(result.Status.ToString()), Times.Once());
             }
 
         }

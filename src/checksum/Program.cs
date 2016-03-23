@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 using CheckSum.Common;
 using CheckSum.IO;
 
@@ -16,7 +12,8 @@ namespace CheckSum
             if (argument.AreValid())
             {
                 try {
-                    argument.Action.Execute(argument.Algorithm, argument.Directory, new FileWriter(), new FileReader());
+                    var result = argument.Action.Execute(argument.Algorithm, argument.Directory, new FileWriter(), new FileReader());
+                    ArgumentWriter.WriteResult(result, new ConsoleWriter());
                 }
                 catch (Exception ex)
                 {

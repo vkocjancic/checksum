@@ -44,6 +44,8 @@
     <Compile Include="Common\AlgorithmFactoryTest.cs" />
     <Compile Include="Common\AlgorithmTest.cs" />
     <Compile Include="Common\ArgumentActionFactoryTest.cs" />
+    <Compile Include="Common\ArgumentActionResultTest.cs" />
+    <Compile Include="Common\ArgumentActionStatusTest.cs" />
     <Compile Include="Common\ArgumentActionTest.cs" />
     <Compile Include="Common\ArgumentFactoryTest.cs" />
     <Compile Include="Common\ArgumentTest.cs" />

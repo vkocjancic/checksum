@@ -8,6 +8,16 @@ namespace CheckSum.IO
 
         #region Static methods
 
+        public static void LogException(Exception ex, IOutputWriter writer)
+        {
+            writer.WriteLine(ex.Message);
+        }
+
+        public static void WriteResult(ArgumentActionResult result, IOutputWriter writer)
+        {
+            writer.WriteLine(result.Status.ToString());
+        }
+
         public static void WriteUse(IOutputWriter writer)
         {
             writer.WriteLine("Usage: checksum action directory algorithm");
@@ -18,11 +28,6 @@ namespace CheckSum.IO
             writer.WriteLine("\tmd5\t\tcalculate checksum using md5");
             writer.WriteLine("\tsha1\t\tcalculate checksum using sha1");
             writer.WriteLine("\tsha2\t\tcalculate checksum using sha2");
-        }
-
-        public static void LogException(Exception ex, IOutputWriter writer)
-        {
-            writer.WriteLine(ex.Message);
         }
 
         #endregion
