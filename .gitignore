@@ -3,7 +3,7 @@ bin
 
 #exclude VS files
 **/*.suo
-/.vs
+**/.vs
 src/packages
 src/*/bin
 src/*/obj
