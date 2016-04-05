@@ -15,7 +15,13 @@ namespace CheckSum.Common
         public static readonly Algorithm SHA1 = new Sha1Algorithm();
         public static readonly Algorithm SHA2 = new Sha2Algorithm();
         public static readonly Algorithm Undefined = new UndefinedAlgorithm();
-        private readonly string ChecksumFileName = "checksum.txt";      
+        private readonly string ChecksumFileName = ".checksum";
+
+        #endregion
+
+        #region Properties
+
+        public abstract string OutputFileName { get; }
 
         #endregion
 
@@ -52,7 +58,7 @@ namespace CheckSum.Common
             var hash = "";
             foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories).OrderBy(f => f))
             {
-                if (file.Contains(this.ChecksumFileName))
+                if (file.Contains(this.OutputFileName))
                 {
                     continue;
                 }
@@ -74,6 +80,15 @@ namespace CheckSum.Common
 
         private class Md5Algorithm : Algorithm
         {
+
+            public override string OutputFileName
+            {
+                get
+                {
+                    return ChecksumFileName + ".md5";
+                }
+            }
+
             public override string CreateHash(string directory)
             {
                 using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -85,6 +100,15 @@ namespace CheckSum.Common
 
         private class Sha1Algorithm : Algorithm
         {
+
+            public override string OutputFileName
+            {
+                get
+                {
+                    return ChecksumFileName + ".sha1";
+                }
+            }
+
             public override string CreateHash(string directory)
             {
                 using (var sha1 = new SHA1Managed())
@@ -96,6 +120,15 @@ namespace CheckSum.Common
 
         private class Sha2Algorithm : Algorithm
         {
+
+            public override string OutputFileName
+            {
+                get
+                {
+                    return ChecksumFileName + ".sha2";
+                }
+            }
+
             public override string CreateHash(string directory)
             {
                 using (var sha2 = new SHA256Managed())
@@ -107,6 +140,15 @@ namespace CheckSum.Common
 
         private class UndefinedAlgorithm : Algorithm
         {
+
+            public override string OutputFileName
+            {
+                get
+                {
+                    return ChecksumFileName;
+                }
+            }
+
             public override string CreateHash(string directory)
             {
                 return "";

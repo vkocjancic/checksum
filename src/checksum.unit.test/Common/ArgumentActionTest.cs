@@ -25,6 +25,7 @@ namespace checksum.unit.test.Common
             m_reader = new Mock<ICheckSumReader>();
             m_writer = new Mock<ICheckSumWriter>();
             m_algorithm.Setup(a => a.CreateHash(It.IsAny<string>())).Returns("abc");
+            m_algorithm.Setup(a => a.OutputFileName).Returns("checksum.txt");
             m_writer.Setup(w => w.WriteToFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
         }
 
@@ -41,7 +42,7 @@ namespace checksum.unit.test.Common
                 m_algorithm.Setup(a => a.AreHashesEqual(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
                 var result = ArgumentAction.Check.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object);
                 Assert.AreEqual(ArgumentActionStatus.InvalidHash, result.Status);
-                m_reader.Verify(x => x.ReadHash("directory", "checksum.txt"), Times.Once());
+                m_reader.Verify(x => x.ReadHash("directory", m_algorithm.Object.OutputFileName), Times.Once());
                 m_algorithm.Verify(x => x.CreateHash("directory"), Times.Once());
                 m_algorithm.Verify(x => x.AreHashesEqual("abc", "cba"), Times.Once());
             }
@@ -55,7 +56,7 @@ namespace checksum.unit.test.Common
                 m_algorithm.Setup(a => a.AreHashesEqual(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
                 var result = ArgumentAction.Check.Execute(m_algorithm.Object, "directory", m_writer.Object, m_reader.Object);
                 Assert.AreEqual(ArgumentActionStatus.Success, result.Status);
-                m_reader.Verify(x => x.ReadHash("directory", "checksum.txt"), Times.Once());
+                m_reader.Verify(x => x.ReadHash("directory", m_algorithm.Object.OutputFileName), Times.Once());
                 m_algorithm.Verify(x => x.CreateHash("directory"), Times.Once());
                 m_algorithm.Verify(x => x.AreHashesEqual("abc", "abc"), Times.Once());
             }
@@ -79,7 +80,7 @@ namespace checksum.unit.test.Common
                 var action = ArgumentAction.Create;
                 action.Execute(m_algorithm.Object, "directory", m_writer.Object, null);
                 m_algorithm.Verify(x => x.CreateHash("directory"), Times.Once());
-                m_writer.Verify(x => x.WriteToFile("abc", "directory", "checksum.txt"), Times.Once());
+                m_writer.Verify(x => x.WriteToFile("abc", "directory", m_algorithm.Object.OutputFileName), Times.Once());
             }
 
             [Test]

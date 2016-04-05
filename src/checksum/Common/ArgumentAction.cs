@@ -31,7 +31,7 @@ namespace CheckSum.Common
             public override ArgumentActionResult Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
             {
                 var hash = algorithm.CreateHash(directory);
-                writer.WriteToFile(hash, directory, "checksum.txt");
+                writer.WriteToFile(hash, directory, algorithm.OutputFileName);
                 return new ArgumentActionResult(ArgumentActionStatus.Success);
             }
 
@@ -47,7 +47,7 @@ namespace CheckSum.Common
             public override ArgumentActionResult Execute(IAlgorithm algorithm, string directory, ICheckSumWriter writer, ICheckSumReader reader)
             {
                 var hash = algorithm.CreateHash(directory);
-                var hashOriginal = reader.ReadHash(directory, "checksum.txt");
+                var hashOriginal = reader.ReadHash(directory, algorithm.OutputFileName);
                 if (!algorithm.AreHashesEqual(hash, hashOriginal))
                 {
                     return new ArgumentActionResult(ArgumentActionStatus.InvalidHash);
