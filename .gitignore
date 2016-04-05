@@ -1,5 +1,6 @@
 # exclude bin folder
 bin
+*.key
 
 #exclude VS files
 **/*.suo
